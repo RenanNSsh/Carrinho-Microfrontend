@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { EventBusService } from './event-bus/event-bus.service';
+import { User } from './user/user.model';
 
 @Component({
   selector: 'carrinho-app',
@@ -6,10 +8,22 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'carrinho';
+
+  constructor(private eventBusService: EventBusService) {
+
+  }
+
+  user: User | null = null;
 
   @Input() nomeProduto = '';
 
   @Output() comprado = new EventEmitter<boolean>()
+
+
+  ngOnInit() {
+    this.eventBusService.userEventBus.subscribe(user => {
+      this.user = user;
+    });
+  }
 
 }

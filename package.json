@@ -9,8 +9,8 @@
     "test": "ng test",
     "postinstall:bak": "",
     "postinstall": "ngcc",
-    "build:externals": "ng build --extra-webpack-config /webpack.externals.js --prod --single-bundle",
-    "build:carrinho:externals": "ng build --extra-webpack-config /webpack.externals.js --prod --project carrinho --single-bundle"
+    "build:externals": "ng build --single-bundle --output-hashing none --extra-webpack-config ./webpack.externals.js",
+    "build:carrinho:externals": "ng build --single-bundle --output-hashing none --extra-webpack-config ./webpack.externals.js --project carrinho "
   },
   "private": true,
   "dependencies": {
